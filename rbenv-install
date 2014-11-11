@@ -1,7 +1,15 @@
 #! /bin/bash
+
+# add postgres sources
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+sudo apt-get install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get upgrade
+
 # install basics
 echo "Installing build tools, git, and postgres"
-sudo apt-get install build-essential git-core postgresql postgis libpq-dev autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev
+sudo apt-get install build-essential git-core postgresql-9.3-postgis-2.1 libpq-dev autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev
 # configure git
 echo "Configuring Git"
 git config --global user.name "Alex Sleighter"
