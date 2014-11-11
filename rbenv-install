@@ -1,8 +1,7 @@
 #! /bin/bash
 # install basics
 echo "Installing build tools, git, and postgres"
-sudo apt-get install build-essentials git-core postgresql postgis libpq-dev 
-
+sudo apt-get install build-essential git-core postgresql postgis libpq-dev autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev
 # configure git
 echo "Configuring Git"
 git config --global user.name "Alex Sleighter"
