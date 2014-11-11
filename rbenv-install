@@ -1,0 +1,38 @@
+#! /bin/bash
+# install basics
+echo "Installing build tools, git, and postgres"
+sudo apt-get install build-essentials git-core postgresql postgis
+
+# configure git
+echo "Configuring Git"
+git config --global user.name "Alex Sleighter"
+git config --global user.email "alex.sleighter@gmail.com"
+
+# generate ssh keys
+echo "Generating SSH Keys..."
+ssh-keygen -t rsa
+
+# display key for copying
+cat ~/.ssh/id_rsa.pub
+read -p "Copy public key to Github. Press [Enter] to continue"
+
+#install rbenv and ruby-build
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+
+# COmment/uncomment next line pairs for distro
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+# echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+# echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+# source ~/.bash_profile
+
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+
+# install and set ruby version
+rbenv install 2.1.4
+rbenv rehash
+rbenv global 2.1.4
+
+
